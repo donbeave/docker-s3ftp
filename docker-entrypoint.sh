@@ -6,6 +6,7 @@ set -e
 : ${AWS_S3_MOUNTPOINT:='/home/ftpusers'}
 : ${AWS_S3_URL:='https://s3.amazonaws.com'}
 : ${S3FS_ARGS:=''}
+: ${FORCE_PASSIVE_IP:=''}
 
 # Configuration checks
 if [ -z "$AWS_STORAGE_BUCKET_NAME" ]; then
@@ -47,6 +48,11 @@ echo "> Running FTP Server"
 
 # start rsyslog
 rsyslogd
+
+
+if [ ! -z "$FORCE_PASSIVE_IP" ]; then
+    echo "$FORCE_PASSIVE_IP" > /etc/pure-ftpd/conf/ForcePassiveIP
+fi
 
 
 # build up flags passed to this file on run + env flag for additional flags

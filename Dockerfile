@@ -91,7 +91,7 @@ RUN echo "no" > /etc/pure-ftpd/conf/Daemonize
 RUN echo "yes" > /etc/pure-ftpd/conf/ChrootEveryone
 RUN echo "yes" > /etc/pure-ftpd/conf/IPV4Only
 RUN echo 'yes' > /etc/pure-ftpd/conf/VerboseLog
-
+RUN echo "30000 30009" > /etc/pure-ftpd/conf/PassivePortRange
 RUN echo "user_allow_other" >> /etc/fuse.conf
 
 # View version
